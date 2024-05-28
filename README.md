@@ -115,24 +115,26 @@ Use Case Diagram menggambarkan interaksi antara aktor dan sistem. Berikut adalah
    - Mendaftarkan Anak
    - Melakukan Pembayaran
    - Menerima Laporan
-   - Memperbarui Informasi Kontak
+   - Mengakses Absensi
 
-2. **Anak**
-   - Menghadiri Kelas
-   - Menerima Laporan
-
-3. **Staf**
+2. **Staf**
    - Mencatat Absensi Anak
    - Mencatat Absensi Guru
    - Memproses Pembayaran
    - Mencatat Absensi Staf
    - Memperbarui Informasi Kontak
 
-4. **Guru**
+3. **Guru**
    - Membuat Laporan
-   - Memperbarui Informasi Kontak
+   - Mencatat Pendaftaran
+   - Melakukan Absensi
+  
+4. **Anak**
+   - Melakukan Absensi
 
-![UseCase_APBO_29-04-2024 (1)](https://github.com/RajaWalidain/4522210013_RajaWalidain_APBO_Daycare_28-05-2024/assets/145961029/527e2883-06eb-4297-9517-298ea67d892b)
+![UseCase_APBO_29-04-2024](https://github.com/RajaWalidain/4522210013_RajaWalidain_APBO_Daycare_28-05-2024/assets/145961029/ad9a219d-ea10-4ffb-a28e-1b3faaa2c198)
+
+
 
 ## Class Diagram
 Class Diagram digunakan untuk menggambarkan struktur kelas dalam sistem dan hubungan antara kelas-kelas tersebut. Berikut adalah detail dari kelas-kelas yang ada dalam sistem ini:
@@ -142,19 +144,19 @@ Class Diagram digunakan untuk menggambarkan struktur kelas dalam sistem dan hubu
 1. **OrangTua**
    - Atribut: `id_orangtua`, `nama`, `no_telp`, `email`, `id_alamat`
    - Metode:
-     - `registerAnak(int id_anak)`
-     - `makePayment(int id_pembayaran)`
+     - `MempunyaiAnak(int id_anak)`
+     - `MelakukanPendaftaran(int id_pembayaran)`
      - `MenerimaReport(int id_laporan)`
 
 2. **Anak**
-   - Atribut: `id_anak`, `id_orangtua`, `nama`, `umur`, `tanggalLahir`, `tempatLahir`, `jenisKelamin`, `id_alamat`
+   - Atribut: `id_anak`, `id_orangtua`, `nama`, `umur`, `tanggalLahir`, `tempatLahir`, `jenisKelamin`
    - Metode:
-     - `attendClass(date tanggal, time waktuMasuk, time waktuKeluar)`
-     - `updateDetails(string nama, int umur, date tanggalLahir, string tempatLahir, string jenisKelamin)`
-     - `MenerimaReport(int id_laporan)`
+     - `MengahdiriPenitipan(date tanggal, time waktuMasuk, time waktuKeluar)`
+     - `MengisiData(string nama, int umur, date tanggalLahir, string tempatLahir, string jenisKelamin)`
+     - `MenerimaLaporan(int id_laporan)`
 
 3. **Staf**
-   - Atribut: `id_staf`, `nama`, `noTelp`, `email`, `id_alamat`
+   - Atribut: `id_staf`, `nama`, `noTelp`, `email`
    - Metode:
      - `MencatatAbsensiAnak(int id_absensiAnak)`
      - `MencatatAbsensiGuru(int id_absensiGuru)`
@@ -162,9 +164,10 @@ Class Diagram digunakan untuk menggambarkan struktur kelas dalam sistem dan hubu
      - `MencatatAbsensiStaf(int id_absensiStaf)`
 
 4. **Guru**
-   - Atribut: `id_guru`, `nama`, `noTelp`, `email`, `id_alamat`
+   - Atribut: `id_guru`, `nama`, `noTelp`, `email`
    - Metode:
-     - `createReport(int id_laporan)`
+     - `MembuatLaporan(int id_laporan)`
+     - `MenandaiKehadiran(tanggal, waktuMasuk, waktuKeluar, Deskripsi)`
 
 5. **AbsensiAnak**
    - Atribut: `id_absensiAnak`, `tanggal`, `waktuMasuk`, `waktuKeluar`, `deskripsi`, `id_staf`
